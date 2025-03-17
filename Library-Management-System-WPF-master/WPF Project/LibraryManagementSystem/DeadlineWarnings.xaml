@@ -1,0 +1,218 @@
+<Window x:Class="LibraryManagementSystem.DeadlineWarnings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Deadline Warnings" Height="900" Width="1600"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="None">
+
+    <Grid Background="#FFF0F0F0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top Bar -->
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="20,0">
+                <Button Style="{StaticResource IconButtonStyle}">
+                    <TextBlock Text="☰" FontSize="24"/>
+                </Button>
+                <TextBlock Text="Due Date Alerts" 
+                          VerticalAlignment="Center" 
+                          Margin="15,0,0,0" 
+                          FontSize="20" 
+                          FontWeight="Bold"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Alert Stats -->
+        <Grid Grid.Row="1" Margin="30,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Due Today -->
+            <Border Grid.Column="0" Style="{StaticResource StatCard}" Margin="0,0,20,0">
+                <Grid Background="White" Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="3" 
+                                  FontSize="36" 
+                                  FontWeight="SemiBold"
+                                  Margin="0,0,0,8"/>
+                        <TextBlock Text="Due Today" 
+                                  FontSize="14" 
+                                  Foreground="#666666"/>
+                    </StackPanel>
+                    <Border Grid.Column="1" 
+                            Background="#FFA726" 
+                            CornerRadius="50"
+                            Width="50" Height="50"
+                            Opacity="0.1">
+                        <TextBlock Text="📅" 
+                                 Foreground="White"
+                                 HorizontalAlignment="Center" 
+                                 VerticalAlignment="Center"
+                                 FontSize="20"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Due This Week -->
+            <Border Grid.Column="1" Style="{StaticResource StatCard}" Margin="0,0,20,0">
+                <Grid Background="White" Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="8" 
+                                  FontSize="36" 
+                                  FontWeight="SemiBold"
+                                  Margin="0,0,0,8"/>
+                        <TextBlock Text="Due This Week" 
+                                  FontSize="14" 
+                                  Foreground="#666666"/>
+                    </StackPanel>
+                    <Border Grid.Column="1" 
+                            Background="#4CAF50" 
+                            CornerRadius="50"
+                            Width="50" Height="50"
+                            Opacity="0.1">
+                        <TextBlock Text="📚" 
+                                 Foreground="White"
+                                 HorizontalAlignment="Center" 
+                                 VerticalAlignment="Center"
+                                 FontSize="20"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Overdue -->
+            <Border Grid.Column="2" Style="{StaticResource StatCard}">
+                <Grid Background="White" Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="2" 
+                                  FontSize="36" 
+                                  FontWeight="SemiBold"
+                                  Margin="0,0,0,8"/>
+                        <TextBlock Text="Overdue" 
+                                  FontSize="14" 
+                                  Foreground="#666666"/>
+                    </StackPanel>
+                    <Border Grid.Column="1" 
+                            Background="#F44336" 
+                            CornerRadius="50"
+                            Width="50" Height="50"
+                            Opacity="0.1">
+                        <TextBlock Text="⚠️" 
+                                 Foreground="White"
+                                 HorizontalAlignment="Center" 
+                                 VerticalAlignment="Center"
+                                 FontSize="20"/>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Deadline List -->
+        <Border Grid.Row="2" 
+                Background="White" 
+                Margin="30,0,30,30"
+                CornerRadius="15">
+            <Grid Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Book Due Dates"
+                          FontSize="20"
+                          FontWeight="SemiBold"
+                          Margin="0,0,0,20"/>
+
+                <ListView Grid.Row="1" 
+                         BorderThickness="0"
+                         Background="Transparent">
+                    <ListViewItem Background="#FFF8E6" Margin="0,0,0,10" Padding="20">
+                        <Grid Width="1000">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="50" Height="70" Background="#FFECB3" CornerRadius="5">
+                                <TextBlock Text="📚" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" Margin="20,0">
+                                <TextBlock Text="The Great Gatsby"
+                                         FontSize="16"
+                                         FontWeight="SemiBold"/>
+                                <TextBlock Text="F. Scott Fitzgerald"
+                                         Foreground="#666666"/>
+                                <TextBlock Text="Borrowed: Jan 15, 2024"
+                                         Foreground="#666666"/>
+                            </StackPanel>
+                            <Border Grid.Column="2" 
+                                    Background="#FFA726"
+                                    CornerRadius="5"
+                                    Padding="15,8">
+                                <TextBlock Text="Due Today!"
+                                         Foreground="White"/>
+                            </Border>
+                        </Grid>
+                    </ListViewItem>
+
+                    <ListViewItem Background="#FFEBEE" Margin="0,0,0,10" Padding="20">
+                        <Grid Width="1000">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="50" Height="70" Background="#FFCDD2" CornerRadius="5">
+                                <TextBlock Text="📚" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" Margin="20,0">
+                                <TextBlock Text="1984"
+                                         FontSize="16"
+                                         FontWeight="SemiBold"/>
+                                <TextBlock Text="George Orwell"
+                                         Foreground="#666666"/>
+                                <TextBlock Text="Borrowed: Jan 1, 2024"
+                                         Foreground="#666666"/>
+                            </StackPanel>
+                            <Border Grid.Column="2" 
+                                    Background="#F44336"
+                                    CornerRadius="5"
+                                    Padding="15,8">
+                                <TextBlock Text="2 Days Overdue!"
+                                         Foreground="White"/>
+                            </Border>
+                        </Grid>
+                    </ListViewItem>
+                </ListView>
+            </Grid>
+        </Border>
+    </Grid>
+</Window> 

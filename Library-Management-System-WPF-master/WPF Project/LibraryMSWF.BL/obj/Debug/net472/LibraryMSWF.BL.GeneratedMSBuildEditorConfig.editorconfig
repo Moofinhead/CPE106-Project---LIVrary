@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = LibraryMSWF.BL
+build_property.ProjectDir = C:\Users\mickb\Downloads\library-management-system-master\Library-Management-System-WPF-master\WPF Project\LibraryMSWF.BL\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

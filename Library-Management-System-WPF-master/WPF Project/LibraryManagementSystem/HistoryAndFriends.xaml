@@ -1,0 +1,226 @@
+<UserControl x:Class="LibraryManagementSystem.HistoryAndFriends"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:LibraryManagementSystem"
+             mc:Ignorable="d"
+             Height="600" Width="1000"
+             Background="#FF1F1F1F">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Background="#FF2D2D2D" Height="60" HorizontalAlignment="Stretch">
+            <TextBlock Text="History &amp; Friends"
+                      Foreground="White"
+                      FontSize="24"
+                      FontWeight="Light"
+                      VerticalAlignment="Center"
+                      Margin="30,0,0,0"/>
+            <Button Content="✕" 
+                    HorizontalAlignment="Right"
+                    Width="60"
+                    Height="60"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderThickness="0"
+                    FontSize="20"
+                    Name="CloseButton"
+                    Click="CloseButton_Click"/>
+        </Grid>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Side - History -->
+            <Border Background="#FF2D2D2D" CornerRadius="5">
+                <DockPanel Margin="20">
+                    <TextBlock DockPanel.Dock="Top" 
+                             Text="Reading History" 
+                             Foreground="White" 
+                             FontSize="20" 
+                             Margin="0,0,0,20"/>
+                    
+                    <ListView x:Name="HistoryListView" Background="Transparent" 
+                             BorderThickness="0">
+                        <ListViewItem Background="#FF383838" Margin="0,0,0,10">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Border Width="40" Height="50" Background="#FF4081">
+                                    <TextBlock Text="FIC" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                
+                                <StackPanel Grid.Column="1" Margin="10,0">
+                                    <TextBlock Text="The Great Gatsby" 
+                                             Foreground="White"/>
+                                    <TextBlock Text="Borrowed: Jan 15, 2024" 
+                                             Foreground="#FF666666"/>
+                                </StackPanel>
+                                
+                                <Border Grid.Column="2" 
+                                        Background="#FFFF4081" 
+                                        CornerRadius="3" 
+                                        Padding="8,4">
+                                    <TextBlock Text="Due in 3 days!" 
+                                             Foreground="White"/>
+                                </Border>
+                            </Grid>
+                        </ListViewItem>
+                        
+                        <ListViewItem Background="#FF383838" Margin="0,0,0,10">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Border Width="40" Height="50" Background="#3498db">
+                                    <TextBlock Text="CS" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                
+                                <StackPanel Grid.Column="1" Margin="10,0">
+                                    <TextBlock Text="Clean Code" 
+                                             Foreground="White"/>
+                                    <TextBlock Text="Returned: Feb 20, 2024" 
+                                             Foreground="#FF666666"/>
+                                </StackPanel>
+                                
+                                <Border Grid.Column="2" 
+                                        Background="#2ecc71" 
+                                        CornerRadius="3" 
+                                        Padding="8,4">
+                                    <TextBlock Text="Completed" 
+                                             Foreground="White"/>
+                                </Border>
+                            </Grid>
+                        </ListViewItem>
+                        
+                        <ListViewItem Background="#FF383838" Margin="0,0,0,10">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Border Width="40" Height="50" Background="#e74c3c">
+                                    <TextBlock Text="PSY" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                
+                                <StackPanel Grid.Column="1" Margin="10,0">
+                                    <TextBlock Text="Thinking, Fast and Slow" 
+                                             Foreground="White"/>
+                                    <TextBlock Text="Borrowed: Mar 5, 2024" 
+                                             Foreground="#FF666666"/>
+                                </StackPanel>
+                                
+                                <Border Grid.Column="2" 
+                                        Background="#f39c12" 
+                                        CornerRadius="3" 
+                                        Padding="8,4">
+                                    <TextBlock Text="Due in 10 days" 
+                                             Foreground="White"/>
+                                </Border>
+                            </Grid>
+                        </ListViewItem>
+                    </ListView>
+                </DockPanel>
+            </Border>
+
+            <!-- Right Side - Friends -->
+            <Border Grid.Column="2" Background="#FF2D2D2D" CornerRadius="5">
+                <DockPanel Margin="20">
+                    <Grid DockPanel.Dock="Top">
+                        <TextBlock Text="Friends' Activity" 
+                                 Foreground="White" 
+                                 FontSize="20" 
+                                 Margin="0,0,0,20"/>
+                        <Button Content="+" 
+                                HorizontalAlignment="Right"
+                                Width="30"
+                                Height="30"
+                                Background="#3498db"
+                                Foreground="White"
+                                BorderThickness="0"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Click="AddFriend_Click"
+                                ToolTip="Add Friend"/>
+                    </Grid>
+                    
+                    <StackPanel x:Name="FriendsPanel">
+                        <Border Background="#FF383838" 
+                                Padding="15" 
+                                Margin="0,0,0,10" 
+                                CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="Maria Garcia is reading:" 
+                                         Foreground="#FF666666"/>
+                                <TextBlock Text="1984" 
+                                         Foreground="White" 
+                                         FontSize="16" 
+                                         Margin="0,5"/>
+                                <TextBlock Text="George Orwell" 
+                                         Foreground="#FFFF4081"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Background="#FF383838" 
+                                Padding="15"
+                                Margin="0,0,0,10"
+                                CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="David Chen is reading:" 
+                                         Foreground="#FF666666"/>
+                                <TextBlock Text="The Pragmatic Programmer" 
+                                         Foreground="White" 
+                                         FontSize="16" 
+                                         Margin="0,5"/>
+                                <TextBlock Text="Andrew Hunt" 
+                                         Foreground="#FFFF4081"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Background="#FF383838" 
+                                Padding="15" 
+                                CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="Recommended for you:" 
+                                         Foreground="#FF666666"/>
+                                <TextBlock Text="Brave New World" 
+                                         Foreground="White" 
+                                         FontSize="16" 
+                                         Margin="0,5"/>
+                                <TextBlock Text="Based on your friends' activity" 
+                                         Foreground="#FFFF4081"/>
+                                <Button Content="Add to Reading List" 
+                                        Margin="0,10,0,0"
+                                        Padding="10,5"
+                                        Background="#3498db"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Click="AddToReadingList_Click"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

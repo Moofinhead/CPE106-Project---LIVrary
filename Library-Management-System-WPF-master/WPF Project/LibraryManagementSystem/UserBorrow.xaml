@@ -1,0 +1,187 @@
+﻿<Window x:Class="LibraryManagementSystem.UserBorrow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:LibraryManagementSystem"
+        Title="Borrow Books" 
+        Height="720" 
+        Width="1280"
+        WindowState="Maximized"
+        Background="#FF1F1F1F">
+
+    <Window.Resources>
+        <!-- StatCard Style -->
+        <Style x:Key="StatCard" TargetType="Border">
+            <Setter Property="Background" Value="#FF383838"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="0,0,20,0"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.2" 
+                                           To="1.05" 
+                                           Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"/>
+                            <DoubleAnimation Duration="0:0:0.2" 
+                                           To="1.05" 
+                                           Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.2" 
+                                           To="1" 
+                                           Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"/>
+                            <DoubleAnimation Duration="0:0:0.2" 
+                                           To="1" 
+                                           Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid HorizontalAlignment="Stretch" 
+          VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Background="#FF2D2D2D" 
+              Height="60" 
+              HorizontalAlignment="Stretch">
+            <TextBlock Text="Browse Books"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Light"
+                       VerticalAlignment="Center"
+                       Margin="30,0,0,0"/>
+        </Grid>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" 
+              Margin="20"
+              HorizontalAlignment="Stretch" 
+              VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Search Box -->
+            <Border Background="#FF2D2D2D"
+                    CornerRadius="5"
+                    Padding="15"
+                    Margin="0,0,0,20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="SearchBox"
+                             Background="Transparent"
+                             Foreground="White"
+                             FontSize="16"
+                             BorderThickness="0"
+                             Padding="5"/>
+
+                    <TextBlock Text="Search books..."
+                              Foreground="#FF8A8A8A"
+                              Margin="5,0,0,0"
+                              FontSize="16">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+            </Border>
+
+            <!-- Books DataGrid -->
+            <DataGrid x:Name="dgBorrow"
+                      Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      GridLinesVisibility="None"
+                      RowHeight="60"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      HeadersVisibility="Column"
+                      CanUserResizeRows="False"
+                      CanUserSortColumns="True"
+                      AlternatingRowBackground="#FF2D2D2D"
+                      RowBackground="#FF252525">
+                
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF3D3D3D"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" 
+                                      Binding="{Binding BookId}" 
+                                      Width="80"/>
+                    <DataGridTextColumn Header="TITLE" 
+                                      Binding="{Binding BookName}" 
+                                      Width="*"/>
+                    <DataGridTextColumn Header="AUTHOR" 
+                                      Binding="{Binding BookAuthor}" 
+                                      Width="250"/>
+                    <DataGridTextColumn Header="ISBN" 
+                                      Binding="{Binding BookISBN}" 
+                                      Width="150"/>
+                    <DataGridTextColumn Header="PRICE" 
+                                      Binding="{Binding BookPrice}" 
+                                      Width="100"/>
+                    <DataGridTextColumn Header="COPIES" 
+                                      Binding="{Binding BookCopies}" 
+                                      Width="100"/>
+                    <DataGridTemplateColumn Header="ACTION" 
+                                          Width="120">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Borrow"
+                                        Click="BtnRequest_Click"
+                                        Padding="15,5"
+                                        Background="#FF3498DB"
+                                        BorderThickness="0"
+                                        Foreground="White">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#FF2980B9"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

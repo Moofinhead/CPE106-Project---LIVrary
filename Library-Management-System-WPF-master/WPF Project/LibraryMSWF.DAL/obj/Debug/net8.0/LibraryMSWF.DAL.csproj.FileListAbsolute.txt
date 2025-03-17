@@ -1,0 +1,3 @@
+C:\Users\mickb\Downloads\library-management-system-master\Library-Management-System-WPF-master\WPF Project\LibraryMSWF.DAL\obj\Debug\net8.0\LibraryMSWF.DAL.csproj.AssemblyReference.cache
+C:\Users\mickb\Downloads\library-management-system-master\Library-Management-System-WPF-master\WPF Project\LibraryMSWF.DAL\obj\Debug\net8.0\LibraryMSWF.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mickb\Downloads\library-management-system-master\Library-Management-System-WPF-master\WPF Project\LibraryMSWF.DAL\obj\Debug\net8.0\LibraryMSWF.DAL.csproj.CoreCompileInputs.cache

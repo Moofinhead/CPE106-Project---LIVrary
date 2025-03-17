@@ -1,0 +1,201 @@
+<Window x:Class="LibraryManagementSystem.FriendsSystem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Friends System" Height="900" Width="1600"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="None">
+
+    <Grid Background="#FFF0F0F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Friends List Sidebar -->
+        <Border Background="White" BorderBrush="#EEEEEE" BorderThickness="0,0,1,0">
+            <DockPanel>
+                <!-- Search Bar -->
+                <Border DockPanel.Dock="Top" 
+                        Background="#F5F5F5" 
+                        Margin="15,20"
+                        CornerRadius="10"
+                        Height="40">
+                    <Grid Margin="15,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="🔍" 
+                                 VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1"
+                                BorderThickness="0"
+                                Background="Transparent"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0"
+                                Text="Search friends..."/>
+                    </Grid>
+                </Border>
+
+                <!-- Friends List -->
+                <ListView BorderThickness="0" Background="Transparent">
+                    <ListViewItem Padding="15,10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="40" 
+                                    Height="40" 
+                                    CornerRadius="20" 
+                                    Background="#3498db">
+                                <TextBlock Text="JS" 
+                                         Foreground="White"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                <TextBlock Text="John Smith"
+                                         FontWeight="SemiBold"/>
+                                <TextBlock Text="Currently Reading: 1984"
+                                         FontSize="12"
+                                         Foreground="#666666"/>
+                            </StackPanel>
+                        </Grid>
+                    </ListViewItem>
+                </ListView>
+            </DockPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Top Bar -->
+            <Grid Background="White">
+                <TextBlock Text="Friends Activity"
+                          VerticalAlignment="Center"
+                          Margin="30,0"
+                          FontSize="20"
+                          FontWeight="Bold"/>
+            </Grid>
+
+            <!-- Activity Feed -->
+            <ScrollViewer Grid.Row="1" Margin="30">
+                <StackPanel>
+                    <!-- Reading Activity -->
+                    <Border Background="White"
+                            CornerRadius="15"
+                            Padding="20"
+                            Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="Reading Activity"
+                                     FontSize="20"
+                                     FontWeight="SemiBold"
+                                     Margin="0,0,0,15"/>
+                            
+                            <ItemsControl>
+                                <Border Background="#F5F5F5"
+                                        CornerRadius="10"
+                                        Padding="15"
+                                        Margin="0,0,0,10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Width="40" 
+                                                Height="40" 
+                                                CornerRadius="20" 
+                                                Background="#3498db">
+                                            <TextBlock Text="JS" 
+                                                     Foreground="White"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+                                        </Border>
+                                        <StackPanel Grid.Column="1" 
+                                                  Margin="15,0">
+                                            <TextBlock>
+                                                <Run Text="John Smith" FontWeight="SemiBold"/>
+                                                <Run Text=" started reading "/>
+                                                <Run Text="1984" FontWeight="SemiBold"/>
+                                            </TextBlock>
+                                            <TextBlock Text="2 hours ago"
+                                                     Foreground="#666666"
+                                                     FontSize="12"/>
+                                        </StackPanel>
+                                        <Button Grid.Column="2"
+                                                Content="View Book"
+                                                Style="{StaticResource NavButton}"
+                                                Width="100"
+                                                Height="30"/>
+                                    </Grid>
+                                </Border>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Reading Challenges -->
+                    <Border Background="White"
+                            CornerRadius="15"
+                            Padding="20">
+                        <StackPanel>
+                            <TextBlock Text="Reading Challenges"
+                                     FontSize="20"
+                                     FontWeight="SemiBold"
+                                     Margin="0,0,0,15"/>
+                            
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Border Background="#F5F5F5"
+                                        CornerRadius="10"
+                                        Padding="20"
+                                        Margin="0,0,10,0">
+                                    <StackPanel>
+                                        <TextBlock Text="Monthly Challenge"
+                                                 FontWeight="SemiBold"
+                                                 Margin="0,0,0,10"/>
+                                        <ProgressBar Value="70"
+                                                   Height="10"
+                                                   Background="#DDDDDD"
+                                                   Foreground="#3498db"/>
+                                        <TextBlock Text="7 of 10 books read"
+                                                 Margin="0,10,0,0"
+                                                 Foreground="#666666"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Grid.Column="1"
+                                        Background="#F5F5F5"
+                                        CornerRadius="10"
+                                        Padding="20"
+                                        Margin="10,0,0,0">
+                                    <StackPanel>
+                                        <TextBlock Text="Genre Challenge"
+                                                 FontWeight="SemiBold"
+                                                 Margin="0,0,0,10"/>
+                                        <ProgressBar Value="40"
+                                                   Height="10"
+                                                   Background="#DDDDDD"
+                                                   Foreground="#3498db"/>
+                                        <TextBlock Text="2 of 5 genres explored"
+                                                 Margin="0,10,0,0"
+                                                 Foreground="#666666"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window> 

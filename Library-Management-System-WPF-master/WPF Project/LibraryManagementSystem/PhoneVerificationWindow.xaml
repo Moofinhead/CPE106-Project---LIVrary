@@ -1,0 +1,113 @@
+<Window x:Class="LibraryManagementSystem.PhoneVerificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Email Verification" 
+        Height="500" 
+        Width="500"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Border Background="#CC2A2A2A"
+            CornerRadius="20"
+            BorderBrush="#44FFFFFF"
+            BorderThickness="1"
+            Margin="10">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" 
+                            ShadowDepth="0" 
+                            Opacity="0.5"/>
+        </Border.Effect>
+
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Verify Your Email"
+                         FontSize="28"
+                         FontWeight="DemiBold"
+                         Foreground="White"
+                         HorizontalAlignment="Center"
+                         Margin="0,0,0,10"/>
+
+                <TextBlock Text="Enter the 6-digit code sent to your email"
+                         Foreground="#CCFFFFFF"
+                         TextAlignment="Center"
+                         TextWrapping="Wrap"
+                         Margin="0,0,0,10"/>
+                
+                <!-- Debug Info -->
+                <TextBlock x:Name="debugText"
+                         Foreground="#888888"
+                         FontSize="12"
+                         TextAlignment="Center"
+                         TextWrapping="Wrap"
+                         Margin="0,5"/>
+            </StackPanel>
+
+            <!-- Verification Code Input -->
+            <StackPanel Grid.Row="1" 
+                        VerticalAlignment="Center">
+                <TextBox x:Name="txtVerificationCode"
+                        Style="{StaticResource VerificationTextBox}"
+                        FontSize="24"
+                        MaxLength="6"
+                        Width="200"
+                        Height="50"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Margin="0,0,0,20"/>
+
+                <TextBlock x:Name="timerText"
+                          Foreground="#CCFFFFFF"
+                          TextAlignment="Center"
+                          Text="Code expires in: 02:00"
+                          Margin="0,0,0,20"/>
+
+                <Button x:Name="btnResend"
+                        Content="RESEND CODE"
+                        Click="BtnResend_Click"
+                        Style="{StaticResource ModernButtonOutline}"
+                        Width="150"
+                        Height="35"
+                        IsEnabled="False"
+                        Margin="0,0,0,10"/>
+
+                <TextBlock x:Name="alertText"
+                          Foreground="#FFFF4444"
+                          TextAlignment="Center"
+                          TextWrapping="Wrap"
+                          Margin="0,10"/>
+            </StackPanel>
+
+            <!-- Bottom Buttons -->
+            <StackPanel Grid.Row="2" 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,20,0,0">
+                <Button Content="VERIFY"
+                        x:Name="btnVerify"
+                        Click="BtnVerify_Click"
+                        Style="{StaticResource ModernButton}"
+                        Width="120"
+                        Height="40"
+                        Margin="0,0,10,0"/>
+
+                <Button Content="CANCEL"
+                        x:Name="btnCancel"
+                        Click="BtnCancel_Click"
+                        Style="{StaticResource ModernButtonOutline}"
+                        Width="120"
+                        Height="40"
+                        Margin="10,0,0,0"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window> 

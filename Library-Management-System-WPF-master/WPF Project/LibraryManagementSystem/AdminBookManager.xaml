@@ -1,0 +1,105 @@
+<Window x:Class="LibraryManagementSystem.AdminBookManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Book Manager" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Margin="0,0,0,20">
+            <TextBlock Text="Book Manager"
+                     FontSize="24"
+                     FontWeight="Bold"
+                     Margin="0,0,0,20"/>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBox x:Name="SearchBox"
+                         Padding="10"
+                         TextChanged="SearchBox_TextChanged">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Style.Resources>
+                                <VisualBrush x:Key="SearchHint" 
+                                            Stretch="None" 
+                                            TileMode="None"
+                                            Opacity="0.5"
+                                            AlignmentX="Left">
+                                    <VisualBrush.Visual>
+                                        <TextBlock Text="Search books..."/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Background" Value="{StaticResource SearchHint}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                
+                <Button Content="Add New Book"
+                        Grid.Column="1"
+                        Margin="10,0,0,0"
+                        Padding="15,10"
+                        Click="AddNewBook_Click"
+                        Style="{StaticResource NavButton}"/>
+            </Grid>
+        </StackPanel>
+
+        <!-- Books DataGrid -->
+        <DataGrid x:Name="BooksGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  GridLinesVisibility="Horizontal"
+                  RowHeaderWidth="0"
+                  Background="White"
+                  BorderThickness="1"
+                  BorderBrush="#DDDDDD">
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" 
+                                  Binding="{Binding BookName}" 
+                                  Width="*"/>
+                <DataGridTextColumn Header="Author" 
+                                  Binding="{Binding BookAuthor}" 
+                                  Width="*"/>
+                <DataGridTextColumn Header="ISBN" 
+                                  Binding="{Binding BookISBN}" 
+                                  Width="Auto"/>
+                <DataGridTextColumn Header="PDF Status" 
+                                  Binding="{Binding PdfStatus}" 
+                                  Width="Auto"/>
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Edit"
+                                        Margin="5"
+                                        Padding="10,5"
+                                        Click="EditBook_Click"/>
+                                <Button Content="Manage PDF"
+                                        Margin="5"
+                                        Padding="10,5"
+                                        Click="ManagePdf_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window> 

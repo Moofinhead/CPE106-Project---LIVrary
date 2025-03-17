@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>LibraryMSWF.BL</RootNamespace>
+    <AssemblyName>LibraryMSWF.BL</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+    <ProjectGuid>{0D28EA64-736E-44E1-A6F1-F9B99DFB2B19}</ProjectGuid>
+    <Deterministic>true</Deterministic>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryMSWF.DAL\LibraryMSWF.DAL.csproj">
+      <Project>{73350053-9ddd-4141-b652-228e8f0508f9}</Project>
+      <Name>LibraryMSWF.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibraryMSWF.Entity\LibraryMSWF.Entity.csproj">
+      <Project>{550870e0-b672-4e86-938c-fc7c4e17305f}</Project>
+      <Name>LibraryMSWF.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="ClassDiagramBL.cd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Twilio" Version="7.8.1" />
+  </ItemGroup>
+</Project>
